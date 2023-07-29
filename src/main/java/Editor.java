@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 public class Editor extends JFrame implements ActionListener {
 
     JTextArea textArea;
+    JScrollPane scrollPane;
 
     //Constructor for GUI
     Editor() {
@@ -15,12 +16,15 @@ public class Editor extends JFrame implements ActionListener {
         this.setLayout(new FlowLayout());this.setLocationRelativeTo(null);
 
         textArea = new JTextArea();
-        textArea.setPreferredSize(new Dimension(450, 450));
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setFont(new Font("SansSerif", Font.PLAIN, 22));
 
-        this.add(textArea); //adding to scroll pane later
+        scrollPane = new JScrollPane(textArea);
+        scrollPane.setPreferredSize(new Dimension(450, 450));
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+        this.add(scrollPane);
         this.setVisible(true);
     }
 
